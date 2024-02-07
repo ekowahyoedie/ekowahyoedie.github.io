@@ -2,7 +2,7 @@
 
 
 
-  echo geturl($_GET['url'], '#EXTVLCOPT:http-referrer=https://www.visionplus.id/'); //untuk referernya
+  echo geturl($_GET['url'], '#EXTVLCOPT:http-referrer=https://bali-airport.com/'); //untuk referernya
 
     function geturl($url, $referer) { 
 
