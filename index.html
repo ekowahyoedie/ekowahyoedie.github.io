@@ -475,80 +475,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
     
 <script type="text/javascript">    
-
-    const xhr = new XMLHttpRequest();
-xhr.open("GET", "https://ekowahyoedie.github.io/index.php");
-xhr.send();
-xhr.responseType = "json";
-xhr.onload = () => {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    const d1 = xhr.response;
-//    console.log(data);
-//  } else {
-//    console.log(Error: ${xhr.status});
-
-            var dataHtml="";
-            //console.log(d);
-            $.each( d1.data, function( key, value ) {  
-
-                var flightno="";
-                var airportloc="";
-                var fromto="";
-                var operator="";
-              if(value.flightno!="" && value.flightno!=null){
-                var flightno = value.flightno.toLowerCase();
-              }
-              if(value.airportloc!="" && value.airportloc!=null){
-                 var airportloc = value.airportloc.toLowerCase();
-              }
-              if(value.fromto!="" && value.fromto!=null){
-                 var fromto = value.fromto.toLowerCase();
-              }
-              if(value.operator!="" && value.operator!=null){
-                 var operator = value.operator.toLowerCase();
-              }
-              dataHtml+='<tr data-info="'+flightno+' '+airportloc+' '+fromto+'">';
-
-              // // alert( key + ": " + value.flight );
-              dataHtml+='<td data-title = "Airline"><img src="https://bali-airport.com/frontend/images/icon/'+value.operator+'.png" width="60%" height="80%" alt="'+operator+'"/></td>';
-              dataHtml+='<td data-title = "flight">'+value.flightno+'</td>';
-              dataHtml+='<td data-title = "From" style="text-transform: uppercase;">'+value.fromtolocation+'</td>';
-              dataHtml+='<td data-title = "hour">'+value.schedule+'</td>';
-              dataHtml+='<td data-title = "status">'+value.flightstat+'</td>';
-
-
-              dataHtml+='</tr>';
-            }); 
-            
-           $('#ajaxApi1').html(dataHtml);
-           
-           var searching = $(".searchFligtInfo").val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi > tr" ).hide();
-                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi > tr" ).show();
-            }
-
-        });
-
-
-        
-
-        $(document).on('keyup', '.searchFligtInfo', function () {
-            var searching = $(this).val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi1 > tr" ).hide();
-                $( "#ajaxApi1 > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi1 > tr" ).show();
-            }
-            
-            
-        });
-    });
+	fetch('https://bali-airport.com/data-airline/arr/domestic')
+	.then(fuction (respone) {
+		return respone.json();
+	})
+	.then(fuction (ajaxApi1) {
+		for(var i=0; i<data.length; i)
+			document.getElementsById("data").innerHtml +=
+			data(i).id + "=>" + data(i).schedule + " " + data(i).estimate + "br />";
+			}
+	
 
 </script>
 
