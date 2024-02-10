@@ -393,11 +393,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 var url = "/arr/domestic"
                     
         $.get('https://bali-airport.com/data-airline'+url, function(d){ 
-           .then(res => {
-		   console.log(res);
-		   })
+           //.then(res => {
+		   //console.log(res);
+		 
             var dataHtml="";
-            console.log(d);
+            //console.log(d);
             $.each( d.data, function( key, value ) {  
 
                 var flightno="";
