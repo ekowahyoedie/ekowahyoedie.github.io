@@ -1,8 +1,58 @@
 <!DOCTYPE html>
 <html>
-	$.get('https://bali-airport.com/data-airline/arr/domestic.json', function(d)) 
+	$.get('https://bali-airport.com/data-airline/arr/domestic.json', function(d)){ 
            //.then(res => 
 		   //console.log(res);
+            var dataHtml="";
+            console.log(d);
+            $.each( d.data, function( key, value ) {  
+
+                var flightno="";
+                var airportloc="";
+                var fromto="";
+                var operator="";
+              if(value.flightno!="" && value.flightno!=null){
+                var flightno = value.flightno.toLowerCase();
+              }
+              if(value.airportloc!="" && value.airportloc!=null){
+                 var airportloc = value.airportloc.toLowerCase();
+              }
+              if(value.fromto!="" && value.fromto!=null){
+                 var fromto = value.fromto.toLowerCase();
+              }
+              if(value.operator!="" && value.operator!=null){
+                 var operator = value.operator.toLowerCase();
+              }
+              dataHtml+='<tr data-info="'+flightno+' '+airportloc+' '+fromto+'">';
+
+              // // alert( key + ": " + value.flight );
+              dataHtml+='<td data-title = "Airline"><img src="https://bali-airport.com/frontend/images/icon/'+value.operator+'.png" width="60%" height="80%" alt="'+operator+'"/></td>';
+              dataHtml+='<td data-title = "flight">'+value.flightno+'</td>';
+              dataHtml+='<td data-title = "From" style="text-transform: uppercase;">'+value.fromtolocation+'</td>';
+              dataHtml+='<td data-title = "hour">'+value.schedule+'</td>';
+              dataHtml+='<td data-title = "status">'+value.flightstat+'</td>';
+
+
+              dataHtml+='</tr>';
+            }); 
+            
+           $('#ajaxApi').html(dataHtml);
+           
+           var searching = $(".searchFligtInfo").val();
+            
+            if (searching.length > 0) {
+                $( "#ajaxApi > tr" ).hide();
+                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
+            } else {
+                $( "#ajaxApi > tr" ).show();
+            }
+
+        });
+
+
+
+
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -396,86 +446,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
 </script>
     
-<script type="text/javascript">    
-
-    $(document).ready(function()
-    {   
-
-        var search ="";
-                            
-            var url = "/arr";
-
-               
-                var url = "/arr/domestic.json"
-                    
-        $.get('https://bali-airport.com/data-airline'+url, function(d){ 
-           //.then(res => {
-		   //console.log(res);
-		 
-            var dataHtml="";
-            console.log(d);
-            $.each( d.data, function( key, value ) {  
-
-                var flightno="";
-                var airportloc="";
-                var fromto="";
-                var operator="";
-              if(value.flightno!="" && value.flightno!=null){
-                var flightno = value.flightno.toLowerCase();
-              }
-              if(value.airportloc!="" && value.airportloc!=null){
-                 var airportloc = value.airportloc.toLowerCase();
-              }
-              if(value.fromto!="" && value.fromto!=null){
-                 var fromto = value.fromto.toLowerCase();
-              }
-              if(value.operator!="" && value.operator!=null){
-                 var operator = value.operator.toLowerCase();
-              }
-              dataHtml+='<tr data-info="'+flightno+' '+airportloc+' '+fromto+'">';
-
-              // // alert( key + ": " + value.flight );
-              dataHtml+='<td data-title = "Airline"><img src="https://bali-airport.com/frontend/images/icon/'+value.operator+'.png" width="60%" height="80%" alt="'+operator+'"/></td>';
-              dataHtml+='<td data-title = "flight">'+value.flightno+'</td>';
-              dataHtml+='<td data-title = "From" style="text-transform: uppercase;">'+value.fromtolocation+'</td>';
-              dataHtml+='<td data-title = "hour">'+value.schedule+'</td>';
-              dataHtml+='<td data-title = "status">'+value.flightstat+'</td>';
-
-
-              dataHtml+='</tr>';
-            }); 
-            
-           $('#ajaxApi').html(dataHtml);
-           
-           var searching = $(".searchFligtInfo").val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi > tr" ).hide();
-                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi > tr" ).show();
-            }
-
-        });
-
-
-        
-
-        $(document).on('keyup', '.searchFligtInfo', function () {
-            var searching = $(this).val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi > tr" ).hide();
-                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi > tr" ).show();
-            }
-            
-            
-        });
-    });
-
-</script>
     
 <script type="text/javascript">    
 	fetch('https://bali-airport.com/data-airline/arr/domestic')
