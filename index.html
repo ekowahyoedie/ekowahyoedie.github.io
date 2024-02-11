@@ -292,6 +292,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="std_table">
 					<table cellpadding="0" cellspacing="0">
                         <thead>
+	$.getJSON('https://bali-airport.com/data-airline/arr/domestic.json', function(d));
+	let url = 'https://bali-airport.com/data-airline/arr/domestic.json';
+	fetch(url)
+	.then(res => res.json())
+	.then (out =>
+		console.log('Cek INI', out));
+
+
+
+
+
                             <tr>
                                 <th>Airline</th>
                                 <th>flight</th>
