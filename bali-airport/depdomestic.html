@@ -250,8 +250,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li>
                     <ul>
 						
-                        <li class=""><a href="https://ekowahyoedie.github.io/bali-airport/depdomestic.html">Depature domestic</a></li>
-                        <li class="active"><a href="https://ekowahyoedie.github.io/bali-airport/depinternational.html">Depature International</a></li>
+                        <li class="active"><a href="https://ekowahyoedie.github.io/bali-airport/depdomestic.html">Depature domestic</a></li>
+                        <li class=""><a href="https://ekowahyoedie.github.io/bali-airport/depinternational.html">Depature International</a></li>
                         
                     </ul>
                 </div>
@@ -390,7 +390,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               }
               if(value.operator!="" && value.operator!=null){
                  var operator = value.operator.toLowerCase();
-              }
+				else{
+				 var operator = " No Data"
+				 }
+			  }
               dataHtml+='<tr data-info="'+flightno+' '+airportloc+' '+fromto+'">';
 
               // // alert( key + ": " + value.flight );
