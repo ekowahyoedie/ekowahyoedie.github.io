@@ -1207,6 +1207,9 @@ font-color: #fff;
 	}
 }    
      @media(max-width:640px){
+		 .banner-wrap{
+			 background-size:cover;
+		 }
 		 .contact p2{
 			 font-size:15px;
 		 }
@@ -1258,7 +1261,7 @@ font-color: #fff;
 			font-size: 0.9em;
 		}
 		.services-grid img {
-			width: 20%;
+			width: 87%;
 		}
 		.services-grid {
 			padding: 16px 0;
@@ -1424,7 +1427,7 @@ font-color: #fff;
 			padding: 10px 0;
 		}
 		.services-grid p {
-			width: 70%;
+			width: 100%;
 		}
 		.works-header h3 {
 			font-size: 1.4em;
@@ -1577,7 +1580,7 @@ font-color: #fff;
 			padding: 10px 0;
 		}
 		.services-grid img {
-			width: 25%;
+			width: 76%;
 		}
 		.services-grid {
 			padding: 10px 0;
