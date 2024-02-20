@@ -61,7 +61,7 @@ body{
 	
 }
 .left ul li a{
-	font-size: 1.1em;
+	font-size: 40px;
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -155,7 +155,7 @@ nav a:focus {
 	-o-background-size: cover;
 	background-size: cover;
 	background-size:contain;
-	height:720px;
+	height:auto;
 	width:auto;
 }
 .wmuSlider {
@@ -694,7 +694,7 @@ h2.resp-accordion {
 	line-height: 1.5em;
 }
 .about-text p1 {
-	font-size: 40px;
+	font-size: 2.5em;
 	color: #7e7e7e;
 	line-height: 1.5em;
 }
@@ -1026,7 +1026,10 @@ font-color: #fff;
 	}
 }
        @media(max-width:800px){
-           	.header {
+           	.left ul li a{
+				font-size:19px;
+			}
+			.header {
            		min-height: 360px;
 			}
 			.banner_center {
@@ -1056,7 +1059,7 @@ font-color: #fff;
 			.services-grid {
 				padding: 20px 0;
 				float: left;
-				width: 33.3%;
+				width: 49.3%;
 			}
 			.services-grid img {
 				width: 35%;
@@ -1204,7 +1207,16 @@ font-color: #fff;
 	}
 }    
      @media(max-width:640px){
-     	.header-top {
+		 .contact p2{
+			 font-size:15px;
+		 }
+     	.about-text p1{
+			font-size: 2em;
+		}
+		.about-text li{
+			font-size: 11px;
+		}
+		.header-top {
 			padding-top: 2.5em;
 		}
      	.top-menu ul li a {
@@ -1216,8 +1228,15 @@ font-color: #fff;
 		.banner_center {
 			top: 36%;
 		}
+		.left ul li a {
+			font-size:16px;
+			text-transform:uppercase;
+		}
+		.right ul li a{
+			font-size:0.7em;
+		}
 		header {
-		min-height: 350px;
+		min-height: 20px;
 		}
 		.banner_center h1{
 			font-size: 1.2em;
@@ -1243,7 +1262,8 @@ font-color: #fff;
 		}
 		.services-grid {
 			padding: 16px 0;
-			width: 100%;
+			width: 50%;
+			float: inline-end;
 		}
 		.services-grid p {
 			font-size: 0.9em;
@@ -1329,11 +1349,23 @@ font-color: #fff;
 			}
 	}
 	@media(max-width:480px){
+		.right ul li a{
+			font-size:0.5em;
+		}
+		.banner-wrap{
+			background-size: cover;
+		}
+		.left ul li a{
+			font-size:11px;
+		}
 		.header {
 			min-height: 275px;
 		}
 		.header-top {
 			padding-top: 1.5em;
+		}
+		.left a {
+			font-size:24px;
 		}
 		.logo img {
 			width: 80%;
@@ -1420,6 +1452,9 @@ font-color: #fff;
 		.about-header h3 {
 			font-size: 01.4em;
 		}
+		.about-text p1 {
+			font-size: 01.4em;
+		}
 		.about-imag img {
 			width: 90%;
 		}
@@ -1466,16 +1501,40 @@ font-color: #fff;
 			}
 		}
 	@media(max-width:414px){
+		.about-text p1{
+			font-size:1.2em;
+			
+		}
+		 .services-grid{
+			 float:inline-start;
+		 }
 		.resp-tab-item {
 		margin: 8px 9px 0px;
 		}
 	}
 	@media(max-width:375px){
+		 .left ul li a{
+			 font-size: 7px;
+		 }
+		 .right ul li a{
+			 font-size: 0.4em;
+		 }
+		  .services-grid p{
+			  font-size:0.4em;
+		  }
+		   .services-grid{
+			   float:inline-end;
+		   }
 		.resp-tabs-list {
 		margin: 13px 0;
 		}
 	}
 	@media(max-width:320px){
+		 .about-text p1{font-size:1em;
+		 }
+		.services-grid{
+			float:inline-start;
+		}
 		
 		.header-top {
 			padding-top: 1em;
