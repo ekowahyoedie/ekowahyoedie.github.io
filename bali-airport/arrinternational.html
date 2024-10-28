@@ -358,83 +358,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
     
 <script type="text/javascript">    
-
-    $(document).ready(function()
-    {   
-
-        var search ="";
-                            
-            var url = "/arr";
-
-               
-                var url = "/arr/domestic"
-                    
-        $.get('https://web-production-03494.up.railway.app/https://bali-airport.com/data-airline/arr/international', function(d){ 
-           //.then(res => {
-		   //console.log(res);
-		 
-            var dataHtml="";
-            //console.log(d);
-            $.each( d.data, function( key, value ) {  
-
-                var flightno="";
-                var airportloc="";
-                var fromto="";
-                var operator="";
-              if(value.flightno!="" && value.flightno!=null){
-                var flightno = value.flightno.toLowerCase();
-              }
-              if(value.airportloc!="" && value.airportloc!=null){
-                 var airportloc = value.airportloc.toLowerCase();
-              }
-              if(value.fromto!="" && value.fromto!=null){
-                 var fromto = value.fromto.toLowerCase();
-              }
-              if(value.operator!="" && value.operator!=null){
-                 var operator = value.operator.toLowerCase();
-              }
-              dataHtml+='<tr data-info="'+flightno+' '+airportloc+' '+fromto+'">';
-
-              // // alert( key + ": " + value.flight );
-              dataHtml+='<td data-title = "Airline"><img src="https://bali-airport.com/frontend/images/icon/'+value.operator+'.png" width="60%" height="80%" alt="'+operator+'"/></td>';
-              dataHtml+='<td data-title = "flight">'+value.flightno+'</td>';
-              dataHtml+='<td data-title = "From" style="text-transform: uppercase;">'+value.fromtolocation+'</td>';
-              dataHtml+='<td data-title = "hour">'+value.schedule+'</td>';
-              dataHtml+='<td data-title = "status">'+value.flightstat+'</td>';
-
-
-              dataHtml+='</tr>';
-            }); 
-            
-           $('#ajaxApi').html(dataHtml);
-           
-           var searching = $(".searchFligtInfo").val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi > tr" ).hide();
-                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi > tr" ).show();
-            }
-
-        });
-
-
-        
-
-        $(document).on('keyup', '.searchFligtInfo', function () {
-            var searching = $(this).val();
-            
-            if (searching.length > 0) {
-                $( "#ajaxApi > tr" ).hide();
-                $( "#ajaxApi > tr[data-info*='"+searching.toLowerCase()+"']" ).show();
-            } else {
-                $( "#ajaxApi > tr" ).show();
-            }
-            
-            
-        });
-    });
+	$.ajax({
+	type: 'get',
+	url : 'https://script.google.com/macros/s/AKfycbz8PUSYtsx3yqM96b8m6C4_x9-o__OmbhbzLXheE8evWGNJXHoBmyW_EkuhZtnPp94/exec',
+	data : '',
+	success: function(html){
+		//alert(html)
+		obj = JSON.parse(JSON.stringify(html))
+		for(var i in obj){
+			$('#ajaxApi').append(
+				'<tr>'+
+					'<td>'+'<img src="https://bali-airport.com/frontend/images/icon/'+obj[i].OPERATOR+'.png" width="60%" height="80%" alt="+obj[i].OPERATOR">'+'</td>'+
+					'<td>'+obj[i].FLIGHTNUMBER+'</td>'+
+					'<td>'+obj[i].DARI+'</td>'+
+					'<td>'+obj[i].JAM+'</td>'+
+					'<td>'+obj[i].STATUS+'</td>'+
+				
+				'</tr>'
+				)}
+		if (obj.length > 0) {
+		//alert ("helo");
+		var $td =$('td[colspan="5"]');
+		$td.css("display","none");
+                 }
+    ;
+		}
+	})
+	
 
 </script>
     
