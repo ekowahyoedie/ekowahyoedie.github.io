@@ -252,8 +252,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li>
                     <ul>
 						
-                        <li class=""><a href="https://ekowahyoedie.github.io/bali-airport/arrdomestic.html">Arrival domestic</a></li>
-                        <li class="active"><a href="https://ekowahyoedie.github.io/bali-airport/arrinternational.html">Arrival International</a></li>
+                        <li class="active"><a href="https://ekowahyoedie.github.io/bali-airport/arrdomestic.html">Arrival domestic</a></li>
+                        <li class=""><a href="https://ekowahyoedie.github.io/bali-airport/arrinternational.html">Arrival International</a></li>
                         
                     </ul>
                 </div>
@@ -363,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .then(data => {
         let rows = '';
         data.forEach(item => {
-			if (item.ARRInter != null){
+			if (item.ARRDomestik != null){
             rows += `'<tr>'
 					'<td><img src=${item.ARRInter} width="50%" alt="${item.ARRInter}"></td>'+
 					'<td>${item.FLIGHTNUMBERArrInter}</td>'+

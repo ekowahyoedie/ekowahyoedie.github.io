@@ -58,7 +58,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="left">
                 <div class="logo">
-                    <img src="https://bali-airport.com/frontend/uploads/defaults/Wvj4yI20170223170638.png"></a>
+                    <img src="https://ekowahyoedie.github.io/bali-airport/lib/logongurahrai.png"></a>
                 </div>
             </div>
             <div class="right">
@@ -264,7 +264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <tr>
                                 <th>Airline</th>
                                 <th>flight</th>
-                                <th>Heading</th>
+                                <th>From</th>
                                 <th>hour</th>
                                 <th>status</th>
                             </tr>
@@ -273,7 +273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                        
                             <tr>
                                 <td colspan="5">
-                                    <img src="https://bali-airport.com/frontend/images/material/loader-meta.gif" width="300px"><br/>
+                                    <img src="https://ekowahyoedie.github.io/bali-airport/lib/loading.gif" width="300px"><br/>
                                     Loading Data...
                                 </td>                              
                             </tr>
@@ -357,35 +357,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
 </script>
     
-<script type="text/javascript">    
-	$.ajax({
-	type: 'get',
-	url : 'https://script.google.com/macros/s/AKfycbwgNuAqcrtjXtVtPeoh33WdFSla4g7LiL9WcxVYQKP2H6H7Ct297XYKRMbDGDXU2Gzb/exec',
-	data : '',
-	success: function(html){
-		//alert(html)
-		obj = JSON.parse(JSON.stringify(html))
-		for(var i in obj){
-			$('#ajaxApi').append(
-				'<tr>'+
-					'<td>'+'<img src="https://bali-airport.com/frontend/images/icon/'+obj[i].OPERATOR+'.png" width="60%" height="80%" alt="+obj[i].OPERATOR">'+'</td>'+
-					'<td>'+obj[i].FLIGHTNUMBER+'</td>'+
-					'<td>'+obj[i].HEADING+'</td>'+
-					'<td>'+obj[i].JAM+'</td>'+
-					'<td>'+obj[i].STATUS+'</td>'+
+    <script type="text/javascript">
+  fetch('https://script.google.com/macros/s/AKfycbzUN63kr5s-kf0SnPyEmShbRKJxL-edncrHRuspYI1vIGA1N05Ki6m3ok7BdLj-MRUmRA/exec') // Ganti dengan URL API Anda
+    .then(response => response.json())
+    .then(data => {
+        let rows = '';
+        data.forEach(item => {
+			if (item.DepInter != null){
+            rows += `'<tr>'
+					'<td><img src=${item.ARRInter} width="50%" alt="${item.ARRInter}"></td>'+
+					'<td>${item.FLIGHTNUMBERArrInter}</td>'+
+					'<td>${item.DARIArrInter}</td>'+
+					'<td>${item.JAMArrInter}</td>'+
+					'<td>${item.STATUSArrInter}</td>'+
 				
-				'</tr>'
-				)}
-		if (obj.length > 0) {
-		//alert ("helo");
-		var $td =$('td[colspan="5"]');
-		$td.css("display","none");
-                 }
-    ;
-		}
-	})
-	
-</script>
+				'</tr>'`;
+        }
+		});
+        document.getElementById('ajaxApi').innerHTML = rows;
+    })
+    //.catch(error => console.error('Error:', error));
+  
+  </script>
     
 <script type="text/javascript">    
 	fetch('https://bali-airport.com/data-airline/arr/domestic')
